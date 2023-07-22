@@ -11,7 +11,6 @@ import {
 } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthProvider";
-import ImgLog from "../../assets/log.svg";
 
 export default function Auth() {
   const emailRef = useRef(null);
@@ -54,7 +53,7 @@ export default function Auth() {
               <Col md={12} className="text-center mb-4">
                 <div className="auth-left">
                   <img
-                    src={ImgLog}
+                    src="https://illustrations.popsy.co/gray/man-riding-a-rocket.svg"
                     alt="login"
                     className="img-fluid"
                     style={{ maxHeight: "390px" }}
@@ -109,11 +108,13 @@ export default function Auth() {
                     </div>
                   </Form>
                 </Card.Body>
-                <div className="w-100 text-center mt-2 fs-5 mb-2">
+                <div className="w-100 text-center mt-2 fs-5 mb-2 general-text">
                   New User? <Link to={"/register"}>Register</Link>
                 </div>
-                <div className="w-100 text-center mt-2 fs-5 mb-2"> OR </div>
-                <div className="w-100 text-center mt-2 fs-5 mb-2">
+                <div className="w-100 text-center mt-2 fs-5 mb-2 general-text">
+                  OR
+                </div>
+                <div className="w-100 text-center mt-2 fs-5 mb-2 general-text">
                   <Link to={"/reset-password"}>Forgot Password</Link>?
                 </div>
               </Col>

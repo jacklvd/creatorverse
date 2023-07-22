@@ -73,8 +73,8 @@ const Header = () => {
           )}
         </div>
         <div className="sample-header-section">
-          <h1>CREATOR VERSE</h1>
-          <h3>Welcome {user.email} !🌟</h3>
+          <h1 className="title-header">CREATOR VERSE</h1>
+          <h3 className="welcome-header">Welcome {user.email} !🌟</h3>
           <div className="button-general">
             <Link to="/dashboard">
               <button className="button-dashboard">Add Creator</button>
