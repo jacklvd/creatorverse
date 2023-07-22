@@ -11,7 +11,6 @@ import {
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../context/AuthProvider";
-import ImgLog from "../../assets/log.svg";
 
 const PasswordReset = () => {
   const { passwordReset } = useAuth();
@@ -45,7 +44,7 @@ const PasswordReset = () => {
               <Col md={12} className="text-center mb-4">
                 <div className="auth-left">
                   <img
-                    src={ImgLog}
+                    src="https://illustrations.popsy.co/gray/calculator.svg"
                     alt="login"
                     className="img-fluid"
                     style={{ maxHeight: "390px" }}

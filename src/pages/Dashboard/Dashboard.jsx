@@ -58,9 +58,20 @@ const Dashboard = () => {
     }
   };
 
+  const handleNameChange = (e) => {
+    const inputValue = e.target.value;
+    const maxLength = 35; // Set the desired character limit here
+
+    if (inputValue.length <= maxLength) {
+      setName(inputValue);
+    } else {
+      setName(inputValue.slice(0, maxLength));
+    }
+  };
+
   const handleDescriptionChange = (e) => {
     const inputValue = e.target.value;
-    const maxLength = 180; // Set the desired character limit here
+    const maxLength = 250; // Set the desired character limit here
 
     if (inputValue.length <= maxLength) {
       setDescription(inputValue);
@@ -102,7 +113,7 @@ const Dashboard = () => {
                           <Form.Control
                             type="text"
                             value={name}
-                            onChange={(e) => setName(e.target.value)}
+                            onChange={handleNameChange}
                             required
                           />
                         </FloatingLabel>
@@ -189,7 +200,7 @@ const Dashboard = () => {
                     className="order-1 order-lg-2 d-flex align-items-center"
                   >
                     <MDBCardImage
-                      src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp"
+                      src="https://illustrations.popsy.co/teal/team-idea.svg"
                       fluid
                     />
                   </MDBCol>
