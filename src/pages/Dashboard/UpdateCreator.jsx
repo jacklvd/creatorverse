@@ -120,7 +120,7 @@ const UpdateCreator = () => {
 
   const handleDescriptionChange = (e) => {
     const inputValue = e.target.value;
-    const maxLength = 250; // Set the desired character limit here
+    const maxLength = 200; // Set the desired character limit here
 
     if (inputValue.length <= maxLength) {
       setDescription(inputValue);
@@ -257,7 +257,7 @@ const UpdateCreator = () => {
                     className="order-1 order-lg-2 d-flex align-items-center"
                   >
                     <MDBCardImage
-                      src="https://illustrations.popsy.co/red/creative-work.svg"
+                      src="https://notioly.com/wp-content/uploads/2023/07/272.Cutting.png"
                       fluid
                     />
                   </MDBCol>
