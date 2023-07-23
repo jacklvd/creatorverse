@@ -13,7 +13,7 @@ const login = (email, password) =>
 
 const passwordReset = (email) =>
   supabase.auth.resetPasswordForEmail(email, {
-    redirectTo: "http://localhost:5173/update-password",
+    redirectTo: "https://creatorverse-six.vercel.app/update-password",
   });
 
 const updatePassword = (updatedPassword) =>
