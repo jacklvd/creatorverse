@@ -235,3 +235,37 @@
   }
 
 }
+
+@media screen and (max-width: 500px) {
+  .creator {
+    width: 16rem;
+    height: 18rem;
+  }
+
+  .creator p {
+    font-size: 0.9rem;
+    inset: auto auto 70px 30px;
+  }
+
+  .creator h2 {
+    font-size: 1rem;
+    inset: auto auto 20px 30px;
+  }
+
+  .popup-content {
+    width: 90%;
+    left: 5%;
+  }
+  
+  .popup-content .popup-title {
+    font-size: 1.7rem;
+  }
+
+  .popup-content img {
+    max-height: 200px;
+  }
+  
+  .popup-description {
+    font-size: 0.9rem;
+  }
+}

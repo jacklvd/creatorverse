@@ -11,7 +11,6 @@ import {
 } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthProvider";
-import ImgLog from "../../assets/log.svg";
 
 const UpdatePassword = () => {
   const { updatePassword } = useAuth();
@@ -57,7 +56,7 @@ const UpdatePassword = () => {
               <Col md={12} className="text-center mb-4">
                 <div className="auth-left">
                   <img
-                    src={ImgLog}
+                    src="https://notioly.com/wp-content/uploads/2023/04/221.Googling.png"
                     alt="login"
                     className="img-fluid"
                     style={{ maxHeight: "390px" }}

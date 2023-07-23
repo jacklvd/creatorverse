@@ -71,7 +71,7 @@ const Dashboard = () => {
 
   const handleDescriptionChange = (e) => {
     const inputValue = e.target.value;
-    const maxLength = 250; // Set the desired character limit here
+    const maxLength = 200; // Set the desired character limit here
 
     if (inputValue.length <= maxLength) {
       setDescription(inputValue);
