@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
-import { useRef, useState } from "react";
+import { useRef, useState } from 'react'
 import {
   Alert,
   Button,
@@ -9,58 +9,58 @@ import {
   Row,
   Col,
   Container,
-} from "react-bootstrap";
-import { Link } from "react-router-dom";
-import { supabase } from "../../client/client";
+} from 'react-bootstrap'
+import { Link } from 'react-router-dom'
+import { supabase } from '../../client/client'
 
 const Register = () => {
-  const emailRef = useRef(null);
-  const passwordRef = useRef(null);
-  const confirmPasswordRef = useRef(null);
-  const [errorMsg, setErrorMsg] = useState("");
-  const [msg, setMsg] = useState("");
-  const [loading, setLoading] = useState(false);
+  const emailRef = useRef(null)
+  const passwordRef = useRef(null)
+  const confirmPasswordRef = useRef(null)
+  const [errorMsg, setErrorMsg] = useState('')
+  const [msg, setMsg] = useState('')
+  const [loading, setLoading] = useState(false)
 
   const register = (email, password) =>
-    supabase.auth.signUp({ email, password });
+    supabase.auth.signUp({ email, password })
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
     if (
       !passwordRef.current?.value ||
       !emailRef.current?.value ||
       !confirmPasswordRef.current?.value
     ) {
-      setErrorMsg("Please fill all the fields");
-      return;
+      setErrorMsg('Please fill all the fields')
+      return
     }
     if (passwordRef.current.value !== confirmPasswordRef.current.value) {
-      setErrorMsg("Passwords doesn't match");
-      return;
+      setErrorMsg("Passwords doesn't match")
+      return
     }
     try {
-      setErrorMsg("");
-      setLoading(true);
+      setErrorMsg('')
+      setLoading(true)
       const { data, error } = await register(
         emailRef.current.value,
-        passwordRef.current.value
-      );
+        passwordRef.current.value,
+      )
       if (!error && data) {
         setMsg(
-          "Registration Successful. Check your email to confirm your account"
-        );
+          'Registration Successful. Check your email to confirm your account',
+        )
       }
     } catch (error) {
-      setErrorMsg("Error in Creating Account");
+      setErrorMsg('Error in Creating Account')
     }
-    setLoading(false);
-  };
+    setLoading(false)
+  }
 
   return (
     <>
       <div
         className="d-flex justify-content-center align-items-center"
-        style={{ height: "100vh" }}
+        style={{ height: '100vh' }}
       >
         <Card className="mx-auto">
           <Container className="my-4">
@@ -71,12 +71,12 @@ const Register = () => {
                     src="https://illustrations.popsy.co/gray/product-launch.svg"
                     alt="login"
                     className="img-fluid"
-                    style={{ maxHeight: "380px" }}
+                    style={{ maxHeight: '380px' }}
                   />
                 </div>
               </Col>
               <Col md={6} className="mx-auto">
-                <Card.Body style={{ padding: "30px" }}>
+                <Card.Body style={{ padding: '30px' }}>
                   <h2 className="text-center mb-4">Register</h2>
                   <Form onSubmit={handleSubmit}>
                     <Form.Text className="text-muted">
@@ -126,7 +126,7 @@ const Register = () => {
                     {errorMsg && (
                       <Alert
                         variant="danger"
-                        onClose={() => setErrorMsg("")}
+                        onClose={() => setErrorMsg('')}
                         dismissible
                       >
                         {errorMsg}
@@ -135,7 +135,7 @@ const Register = () => {
                     {msg && (
                       <Alert
                         variant="success"
-                        onClose={() => setMsg("")}
+                        onClose={() => setMsg('')}
                         dismissible
                       >
                         {msg}
@@ -149,7 +149,7 @@ const Register = () => {
                   </Form>
                 </Card.Body>
                 <div className="w-100 text-center mt-2 fs-5 mb-2 general-text">
-                  Already a User? <Link to={"/login"}>Login</Link>
+                  Already a User? <Link to={'/login'}>Login</Link>
                 </div>
               </Col>
             </Row>
@@ -157,7 +157,7 @@ const Register = () => {
         </Card>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default Register;
+export default Register

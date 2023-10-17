@@ -1,48 +1,48 @@
-import { useAuth } from "../context/AuthProvider";
-import { supabase } from "../client/client";
-import { useState, useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
-import "./styles/cards.scss";
+import { useAuth } from '../context/AuthProvider'
+import { supabase } from '../client/client'
+import { useState, useEffect, useRef } from 'react'
+import { Link } from 'react-router-dom'
+import './styles/cards.scss'
 
 const limitText = (text, maxLength) => {
-  if (text.length <= maxLength) return text;
-  return text.slice(0, maxLength - 3) + "...";
-};
+  if (text.length <= maxLength) return text
+  return text.slice(0, maxLength - 3) + '...'
+}
 
 const Cards = () => {
-  const { user } = useAuth();
-  const [userInfo, setUserInfo] = useState([]);
-  const [selectedCreator, setSelectedCreator] = useState(null);
-  const popUpRef = useRef();
+  const { user } = useAuth()
+  const [userInfo, setUserInfo] = useState([])
+  const [selectedCreator, setSelectedCreator] = useState(null)
+  const popUpRef = useRef()
 
   useEffect(() => {
     const fetchUserInfo = async () => {
       const { data, error } = await supabase
-        .from("creators")
-        .select("*")
-        .eq("user_id", user.id);
-      if (error) console.log(error);
-      else setUserInfo(data);
-    };
-    fetchUserInfo();
-  }, [user.id]);
+        .from('creators')
+        .select('*')
+        .eq('user_id', user.id)
+      if (error) console.log(error)
+      else setUserInfo(data)
+    }
+    fetchUserInfo()
+  }, [user.id])
 
   const handleInfoButtonClick = (creator) => {
-    setSelectedCreator(creator);
-  };
+    setSelectedCreator(creator)
+  }
 
   const handleCloseButtonClick = () => {
-    setSelectedCreator(null);
-  };
+    setSelectedCreator(null)
+  }
 
   const handleOverlayClick = (e) => {
     if (popUpRef.current && !popUpRef.current.contains(e.target)) {
-      handleCloseButtonClick();
+      handleCloseButtonClick()
     }
-  };
+  }
 
   if (userInfo?.length === 0)
-    return <div>You have no creators cards available</div>;
+    return <div>You have no creators cards available</div>
 
   return (
     <>
@@ -113,7 +113,7 @@ const Cards = () => {
         </div>
       )}
     </>
-  );
-};
+  )
+}
 
-export default Cards;
+export default Cards

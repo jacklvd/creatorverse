@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef, useState } from 'react'
 import {
   Alert,
   Button,
@@ -8,47 +8,47 @@ import {
   Row,
   Card,
   Container,
-} from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
-import { useAuth } from "../../context/AuthProvider";
+} from 'react-bootstrap'
+import { useNavigate } from 'react-router-dom'
+import { useAuth } from '../../context/AuthProvider'
 
 const UpdatePassword = () => {
-  const { updatePassword } = useAuth();
-  const passwordRef = useRef(null);
-  const confirmPasswordRef = useRef(null);
-  const [errorMsg, setErrorMsg] = useState("");
-  const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
+  const { updatePassword } = useAuth()
+  const passwordRef = useRef(null)
+  const confirmPasswordRef = useRef(null)
+  const [errorMsg, setErrorMsg] = useState('')
+  const [loading, setLoading] = useState(false)
+  const navigate = useNavigate()
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
     if (!passwordRef.current?.value || !confirmPasswordRef.current?.value) {
-      setErrorMsg("Please fill all the fields");
-      return;
+      setErrorMsg('Please fill all the fields')
+      return
     }
     if (passwordRef.current.value !== confirmPasswordRef.current.value) {
-      setErrorMsg("Passwords doesn't match. Try again");
-      return;
+      setErrorMsg("Passwords doesn't match. Try again")
+      return
     }
     try {
-      setErrorMsg("");
-      setLoading(true);
-      const { error } = await updatePassword(passwordRef.current.value);
-      console.log(passwordRef.current.value);
+      setErrorMsg('')
+      setLoading(true)
+      const { error } = await updatePassword(passwordRef.current.value)
+      console.log(passwordRef.current.value)
       if (!error) {
-        navigate("/");
+        navigate('/')
       }
     } catch (error) {
-      setErrorMsg("Error in Updating Password. Please try again");
+      setErrorMsg('Error in Updating Password. Please try again')
     }
-    setLoading(false);
-  };
+    setLoading(false)
+  }
 
   return (
     <>
       <div
         className="d-flex justify-content-center align-items-center"
-        style={{ height: "100vh" }}
+        style={{ height: '100vh' }}
       >
         <Card className="mx-auto">
           <Container className="my-4">
@@ -59,12 +59,12 @@ const UpdatePassword = () => {
                     src="https://notioly.com/wp-content/uploads/2023/04/221.Googling.png"
                     alt="login"
                     className="img-fluid"
-                    style={{ maxHeight: "390px" }}
+                    style={{ maxHeight: '390px' }}
                   />
                 </div>
               </Col>
               <Col md={6} className="mx-auto">
-                <Card.Body style={{ padding: "30px" }}>
+                <Card.Body style={{ padding: '30px' }}>
                   <h2 className="text-center mb-4">Update Password</h2>
                   <Form onSubmit={handleSubmit}>
                     <Form.Group id="password">
@@ -98,7 +98,7 @@ const UpdatePassword = () => {
                     {errorMsg && (
                       <Alert
                         variant="danger"
-                        onClose={() => setErrorMsg("")}
+                        onClose={() => setErrorMsg('')}
                         dismissible
                       >
                         {errorMsg}
@@ -117,7 +117,7 @@ const UpdatePassword = () => {
         </Card>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default UpdatePassword;
+export default UpdatePassword

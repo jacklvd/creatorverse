@@ -1,8 +1,8 @@
-import { useState, useEffect } from "react";
-import { Alert, Button, Form, FloatingLabel } from "react-bootstrap";
-import { supabase } from "../../client/client";
-import { Link, useParams } from "react-router-dom";
-import { useAuth } from "../../context/AuthProvider";
+import { useState, useEffect } from 'react'
+import { Alert, Button, Form, FloatingLabel } from 'react-bootstrap'
+import { supabase } from '../../client/client'
+import { Link, useParams } from 'react-router-dom'
+import { useAuth } from '../../context/AuthProvider'
 import {
   MDBContainer,
   MDBRow,
@@ -10,53 +10,53 @@ import {
   MDBCard,
   MDBCardBody,
   MDBCardImage,
-} from "mdb-react-ui-kit";
-import Header from "../../components/Header.jsx";
+} from 'mdb-react-ui-kit'
+import Header from '../../components/Header.jsx'
 
 const UpdateCreator = () => {
   // Fetch the authenticated user's ID
-  const creatorId = useParams();
-  const { user } = useAuth();
-  const [loading, setLoading] = useState(true);
-  const [name, setName] = useState("");
-  const [url, setUrl] = useState("");
-  const [description, setDescription] = useState("");
-  const [imageURL, setImageURL] = useState("");
-  const [showAlert, setShowAlert] = useState(false);
+  const creatorId = useParams()
+  const { user } = useAuth()
+  const [loading, setLoading] = useState(true)
+  const [name, setName] = useState('')
+  const [url, setUrl] = useState('')
+  const [description, setDescription] = useState('')
+  const [imageURL, setImageURL] = useState('')
+  const [showAlert, setShowAlert] = useState(false)
 
   useEffect(() => {
     async function getCreatorInfo() {
-      setLoading(true);
+      setLoading(true)
 
       let { data, error } = await supabase
-        .from("creators")
+        .from('creators')
         .select(`name, url, description, imageURL`)
-        .eq("id", creatorId.id)
-        .eq("user_id", user.id)
-        .single();
+        .eq('id', creatorId.id)
+        .eq('user_id', user.id)
+        .single()
 
       if (error) {
-        console.warn(error);
+        console.warn(error)
       } else if (data) {
-        setName(data.name);
-        setUrl(data.url);
-        setDescription(data.description);
-        setImageURL(data.imageURL);
+        setName(data.name)
+        setUrl(data.url)
+        setDescription(data.description)
+        setImageURL(data.imageURL)
       }
 
-      setLoading(false);
+      setLoading(false)
     }
 
-    getCreatorInfo();
-  }, [creatorId.id, user.id]);
+    getCreatorInfo()
+  }, [creatorId.id, user.id])
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
 
     // Check if any fields are empty
     if (!name || !url || !description || !imageURL) {
-      setShowAlert(true);
-      return;
+      setShowAlert(true)
+      return
     }
 
     // update current record in creators table
@@ -67,67 +67,67 @@ const UpdateCreator = () => {
       description,
       imageURL,
       updated_at: new Date(),
-    };
+    }
 
-    let { error } = await supabase.from("creators").upsert(updates);
+    let { error } = await supabase.from('creators').upsert(updates)
 
     if (error) {
-      alert(error.message);
+      alert(error.message)
     } else {
-      alert("Creator updated successfully!");
-      setLoading(false);
+      alert('Creator updated successfully!')
+      setLoading(false)
     }
-  };
+  }
 
   async function deleteCreator(e) {
-    e.preventDefault();
+    e.preventDefault()
 
     const confirmed = window.confirm(
-      "Are you sure you want to delete this creator?"
-    );
+      'Are you sure you want to delete this creator?',
+    )
 
     if (confirmed) {
       const { error } = await supabase
-        .from("creators")
+        .from('creators')
         .delete()
-        .eq("id", creatorId.id);
+        .eq('id', creatorId.id)
 
       if (error) {
-        alert(error.message);
+        alert(error.message)
       } else {
         // Reset form fields
-        setName("");
-        setUrl("");
-        setDescription("");
-        setImageURL("");
-        alert("Creator deleted successfully!");
+        setName('')
+        setUrl('')
+        setDescription('')
+        setImageURL('')
+        alert('Creator deleted successfully!')
         // Redirect the user to the desired page
-        window.location.href = "/";
+        window.location.href = '/'
       }
     }
   }
 
   const handleNameChange = (e) => {
-    const inputValue = e.target.value;
-    const maxLength = 35; // Set the desired character limit here
+    const inputValue = e.target.value
+    const maxLength = 35 // Set the desired character limit here
 
     if (inputValue.length <= maxLength) {
-      setName(inputValue);
+      setName(inputValue)
     } else {
-      setName(inputValue.slice(0, maxLength));
+      setName(inputValue.slice(0, maxLength))
     }
-  };
+  }
 
   const handleDescriptionChange = (e) => {
-    const inputValue = e.target.value;
-    const maxLength = 200; // Set the desired character limit here
+    const inputValue = e.target.value
+    const maxLength = 200 // Set the desired character limit here
 
     if (inputValue.length <= maxLength) {
-      setDescription(inputValue);
+      setDescription(inputValue)
     } else {
-      setDescription(inputValue.slice(0, maxLength));
+      setDescription(inputValue.slice(0, maxLength))
     }
-  };
+  }
 
   return (
     <>
@@ -137,7 +137,7 @@ const UpdateCreator = () => {
           <MDBContainer fluid>
             <MDBCard
               className="text-black m-5"
-              style={{ borderRadius: "25px" }}
+              style={{ borderRadius: '25px' }}
             >
               <MDBCardBody>
                 <MDBRow>
@@ -159,7 +159,7 @@ const UpdateCreator = () => {
                         >
                           <Form.Control
                             type="text"
-                            value={name || ""}
+                            value={name || ''}
                             onChange={handleNameChange}
                             required
                           />
@@ -176,7 +176,7 @@ const UpdateCreator = () => {
                         >
                           <Form.Control
                             type="text"
-                            value={url || ""}
+                            value={url || ''}
                             onChange={(e) => setUrl(e.target.value)}
                             required
                           />
@@ -194,7 +194,7 @@ const UpdateCreator = () => {
                         >
                           <Form.Control
                             type="text"
-                            value={description || ""}
+                            value={description || ''}
                             onChange={handleDescriptionChange}
                             limit="20"
                             required
@@ -213,7 +213,7 @@ const UpdateCreator = () => {
                         >
                           <Form.Control
                             type="text"
-                            value={imageURL || ""}
+                            value={imageURL || ''}
                             onChange={(e) => setImageURL(e.target.value)}
                             required
                           />
@@ -234,7 +234,7 @@ const UpdateCreator = () => {
                         type="submit"
                         disabled={loading}
                       >
-                        {loading ? "Loading..." : "Update Creator"}
+                        {loading ? 'Loading...' : 'Update Creator'}
                       </Button>
                       <Button
                         type="submit"
@@ -268,7 +268,7 @@ const UpdateCreator = () => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default UpdateCreator;
+export default UpdateCreator
