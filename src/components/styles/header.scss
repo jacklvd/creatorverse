@@ -1,202 +1,209 @@
 .sample-header {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    background-image: url("http://webmadewell.com/wp-content/uploads/2018/01/img-bg-sample-parallax-header.jpg");
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    text-align: center;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  background-image: url('http://webmadewell.com/wp-content/uploads/2018/01/img-bg-sample-parallax-header.jpg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  text-align: center;
 }
 
 .sample-header::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-color: MidnightBlue;
-    opacity: 0.5;
-    -webkit-backface-visibility: hidden;
-    -webkit-transform: translateZ(0); 
-    backface-visibility: hidden;
-    transform: translateZ(0);
-    background-attachment: fixed;
-    animation: grow 20s linear 1ms infinite alternate;
-    transition: all 0.2s ease-in-out;
-    z-index: -2;
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: MidnightBlue;
+  opacity: 0.5;
+  -webkit-backface-visibility: hidden;
+  -webkit-transform: translateZ(0);
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  background-attachment: fixed;
+  animation: grow 20s linear 1ms infinite alternate;
+  transition: all 0.2s ease-in-out;
+  z-index: -2;
 }
 
 .sample-header::after {
-    content: "";
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    z-index: -1;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.12) 40%,rgba(27,32,48,1) 100%);
+  content: '';
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.12) 40%,
+    rgba(27, 32, 48, 1) 100%
+  );
 }
 
 .sample-header-section {
-    position: relative;
-    padding: 10% 0 10%;
-    max-width: 840px;
-    margin-left: auto;
-    margin-right: auto;
-    color: white;
-    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
-    font-family: "Montserrat", sans-serif;
-    z-index: 10;
+  position: relative;
+  padding: 10% 0 10%;
+  max-width: 840px;
+  margin-left: auto;
+  margin-right: auto;
+  color: white;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+  font-family: 'Montserrat', sans-serif;
+  z-index: 10;
 }
 
 .sample-section-wrap {
-    position: relative;
-    background-color: white;
-    text-align: center;
-    // max-width: max-content;
+  position: relative;
+  background-color: white;
+  text-align: center;
+  // max-width: max-content;
 }
 
 .sample-section {
-    position: relative;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 10px;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px;
 }
 
 .menu {
-    display: flex;
-    border: 1px solid #fff;
-    border-radius: 3px;
-    position: absolute;
-    right: 20px;
-    text-decoration: none;
-    align-items: center;
-    align-content: center;
-    margin: 20px 15px;
-    padding: 0px 10px;
-    font-weight: 700;
-    font-size: 1.1em;
-    box-sizing: border-box;
-    height: 40px;
-    line-height: 1;
-    background-color: transparent;
-    z-index: 12;
+  display: flex;
+  border: 1px solid #fff;
+  border-radius: 3px;
+  position: absolute;
+  right: 20px;
+  text-decoration: none;
+  align-items: center;
+  align-content: center;
+  margin: 20px 15px;
+  padding: 0px 10px;
+  font-weight: 700;
+  font-size: 1.1em;
+  box-sizing: border-box;
+  height: 40px;
+  line-height: 1;
+  background-color: transparent;
+  z-index: 12;
 }
 
 .menu:hover {
-    background-color: #000;
-    color: #fff;
+  background-color: #000;
+  color: #fff;
 }
 
 .logo {
-    border: 1px solid;
-    position: absolute;
-    border-radius: 3px;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    align-content: center;
-    margin: 20px 20px;
-    padding: 0px 10px;
-    font-weight: 900;
-    font-size: 1.1em;
-    line-height: 1;
-    box-sizing: border-box;
-    height: 40px;
-    z-index: 12;
+  border: 1px solid;
+  position: absolute;
+  border-radius: 3px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  margin: 20px 20px;
+  padding: 0px 10px;
+  font-weight: 900;
+  font-size: 1.1em;
+  line-height: 1;
+  box-sizing: border-box;
+  height: 40px;
+  z-index: 12;
 }
 
 .logo:hover {
-    background-color: #000;
-    color: #fff;
+  background-color: #000;
+  color: #fff;
 }
 
 .button-dashboard {
-    border: 1px solid;
-    border-radius: 3px;
-    text-decoration: none;
-    align-items: center;
-    align-content: center;
-    margin: 20px 20px;
-    padding: 0px 10px;
-    font-weight: 900;
-    font-size: 1.1em;
-    line-height: 1;
-    box-sizing: border-box;
-    height: 40px;
+  border: 1px solid;
+  border-radius: 3px;
+  text-decoration: none;
+  align-items: center;
+  align-content: center;
+  margin: 20px 20px;
+  padding: 0px 10px;
+  font-weight: 900;
+  font-size: 1.1em;
+  line-height: 1;
+  box-sizing: border-box;
+  height: 40px;
 }
 
 .button-dashboard:hover {
-    background-color: #000;
-    color: #fff;
+  background-color: #000;
+  color: #fff;
 }
-    
 
 @keyframes grow {
-    0% { transform: scale(1) translateY(0px)}
-    50% { transform: scale(1.5) translateY(-700px)}
+  0% {
+    transform: scale(1) translateY(0px);
+  }
+  50% {
+    transform: scale(1.5) translateY(-700px);
+  }
 }
 
 @media screen and (max-width: 768px) {
-    .sample-header-section {
-        padding: 20% 0 20%;
-    }
+  .sample-header-section {
+    padding: 20% 0 20%;
+  }
 
-    .sample-header::before {
-        background-attachment: scroll;
-    }
+  .sample-header::before {
+    background-attachment: scroll;
+  }
 
-    .sample-header::after {
-        background: none;
-    }
+  .sample-header::after {
+    background: none;
+  }
 
-    .welcome-title {
-        font-size: 2.0em;
-    }
+  .welcome-title {
+    font-size: 2em;
+  }
 
-    .welcome-header {
-        font-size: 1.3em;
-    }
+  .welcome-header {
+    font-size: 1.3em;
+  }
 
-    .menu {
-        font-size: 0.8em;
-    }
+  .menu {
+    font-size: 0.8em;
+  }
 
-    .logo {
-        font-size: 0.8em;
-    }
+  .logo {
+    font-size: 0.8em;
+  }
 }
 
 @media screen and (max-width: 480px) {
-    .sample-header-section {
-        padding: 30% 0 30%;
-    }
+  .sample-header-section {
+    padding: 30% 0 30%;
+  }
 
-    .sample-header::before {
-        background-attachment: scroll;
-    }
+  .sample-header::before {
+    background-attachment: scroll;
+  }
 
-    .sample-header::after {
-        background: none;
-    }
+  .sample-header::after {
+    background: none;
+  }
 
-    .welcome-title {
-        font-size: 1.5em;
-    }
+  .welcome-title {
+    font-size: 1.5em;
+  }
 
-    .welcome-header {
-        font-size: 1.0em;
-    }
+  .welcome-header {
+    font-size: 1em;
+  }
 
-    .menu {
-        font-size: 0.8em;
-    }
+  .menu {
+    font-size: 0.8em;
+  }
 
-    .logo {
-        font-size: 0.8em;
-        margin: 20px 10px;
-    }
+  .logo {
+    font-size: 0.8em;
+    margin: 20px 10px;
+  }
 }

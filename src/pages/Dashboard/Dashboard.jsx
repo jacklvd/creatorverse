@@ -1,8 +1,8 @@
-import { useState } from "react";
-import { Alert, Button, Form, FloatingLabel } from "react-bootstrap";
-import { supabase } from "../../client/client";
-import { Link } from "react-router-dom";
-import { useAuth } from "../../context/AuthProvider";
+import { useState } from 'react'
+import { Alert, Button, Form, FloatingLabel } from 'react-bootstrap'
+import { supabase } from '../../client/client'
+import { Link } from 'react-router-dom'
+import { useAuth } from '../../context/AuthProvider'
 import {
   MDBContainer,
   MDBRow,
@@ -10,31 +10,31 @@ import {
   MDBCard,
   MDBCardBody,
   MDBCardImage,
-} from "mdb-react-ui-kit";
-import Header from "../../components/Header.jsx";
+} from 'mdb-react-ui-kit'
+import Header from '../../components/Header.jsx'
 
 const Dashboard = () => {
   // Fetch the authenticated user's ID
-  const { user } = useAuth();
-  const [name, setName] = useState("");
-  const [url, setUrl] = useState("");
-  const [description, setDescription] = useState("");
-  const [imageURL, setImageURL] = useState("");
-  const [showAlert, setShowAlert] = useState(false);
+  const { user } = useAuth()
+  const [name, setName] = useState('')
+  const [url, setUrl] = useState('')
+  const [description, setDescription] = useState('')
+  const [imageURL, setImageURL] = useState('')
+  const [showAlert, setShowAlert] = useState(false)
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
 
     // Check if any fields are empty
     if (!name || !url || !description || !imageURL) {
-      setShowAlert(true);
-      return;
+      setShowAlert(true)
+      return
     }
 
-    const user_id = user.id;
+    const user_id = user.id
 
     // Create a new record in the Supabase table
-    const { error } = await supabase.from("creators").insert([
+    const { error } = await supabase.from('creators').insert([
       {
         user_id,
         name,
@@ -44,41 +44,41 @@ const Dashboard = () => {
         created_at: new Date(),
         updated_at: new Date(),
       },
-    ]);
+    ])
 
     if (error) {
-      console.error("Error inserting data:", error);
+      console.error('Error inserting data:', error)
     } else {
       // Reset form fields
-      setName("");
-      setUrl("");
-      setDescription("");
-      setImageURL("");
-      alert("Creator added successfully!");
+      setName('')
+      setUrl('')
+      setDescription('')
+      setImageURL('')
+      alert('Creator added successfully!')
     }
-  };
+  }
 
   const handleNameChange = (e) => {
-    const inputValue = e.target.value;
-    const maxLength = 35; // Set the desired character limit here
+    const inputValue = e.target.value
+    const maxLength = 35 // Set the desired character limit here
 
     if (inputValue.length <= maxLength) {
-      setName(inputValue);
+      setName(inputValue)
     } else {
-      setName(inputValue.slice(0, maxLength));
+      setName(inputValue.slice(0, maxLength))
     }
-  };
+  }
 
   const handleDescriptionChange = (e) => {
-    const inputValue = e.target.value;
-    const maxLength = 200; // Set the desired character limit here
+    const inputValue = e.target.value
+    const maxLength = 200 // Set the desired character limit here
 
     if (inputValue.length <= maxLength) {
-      setDescription(inputValue);
+      setDescription(inputValue)
     } else {
-      setDescription(inputValue.slice(0, maxLength));
+      setDescription(inputValue.slice(0, maxLength))
     }
-  };
+  }
 
   return (
     <>
@@ -88,7 +88,7 @@ const Dashboard = () => {
           <MDBContainer fluid>
             <MDBCard
               className="text-black m-5"
-              style={{ borderRadius: "25px" }}
+              style={{ borderRadius: '25px' }}
             >
               <MDBCardBody>
                 <MDBRow>
@@ -211,7 +211,7 @@ const Dashboard = () => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default Dashboard;
+export default Dashboard
