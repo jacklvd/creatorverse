@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef, useState } from 'react'
 import {
   Alert,
   Button,
@@ -8,44 +8,44 @@ import {
   Row,
   Card,
   Container,
-} from "react-bootstrap";
-import { Link, useNavigate } from "react-router-dom";
-import { useAuth } from "../../context/AuthProvider";
+} from 'react-bootstrap'
+import { Link, useNavigate } from 'react-router-dom'
+import { useAuth } from '../../context/AuthProvider'
 
 export default function Auth() {
-  const emailRef = useRef(null);
-  const passwordRef = useRef(null);
-  const [errorMsg, setErrorMsg] = useState("");
-  const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
-  const { login } = useAuth();
+  const emailRef = useRef(null)
+  const passwordRef = useRef(null)
+  const [errorMsg, setErrorMsg] = useState('')
+  const [loading, setLoading] = useState(false)
+  const navigate = useNavigate()
+  const { login } = useAuth()
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
     try {
-      setErrorMsg("");
-      setLoading(true);
+      setErrorMsg('')
+      setLoading(true)
       if (!passwordRef.current?.value || !emailRef.current?.value) {
-        setErrorMsg("Please fill in the fields");
-        return;
+        setErrorMsg('Please fill in the fields')
+        return
       }
       const {
         data: { user, session },
         error,
-      } = await login(emailRef.current.value, passwordRef.current.value);
-      if (error) setErrorMsg(error.message);
-      if (user && session) navigate("/");
+      } = await login(emailRef.current.value, passwordRef.current.value)
+      if (error) setErrorMsg(error.message)
+      if (user && session) navigate('/')
     } catch (error) {
-      setErrorMsg("Email or Password Incorrect");
+      setErrorMsg('Email or Password Incorrect')
     }
-    setLoading(false);
-  };
+    setLoading(false)
+  }
 
   return (
     <>
       <div
         className="d-flex justify-content-center align-items-center"
-        style={{ height: "100vh" }}
+        style={{ height: '100vh' }}
       >
         <Card className="mx-auto">
           <Container className="my-4">
@@ -56,12 +56,12 @@ export default function Auth() {
                     src="https://illustrations.popsy.co/gray/man-riding-a-rocket.svg"
                     alt="login"
                     className="img-fluid"
-                    style={{ maxHeight: "390px" }}
+                    style={{ maxHeight: '390px' }}
                   />
                 </div>
               </Col>
               <Col md={6} className="mx-auto">
-                <Card.Body style={{ padding: "30px" }}>
+                <Card.Body style={{ padding: '30px' }}>
                   <h2 className="text-center mb-4">CREATOR VERSE</h2>
                   <Form onSubmit={handleSubmit}>
                     <Form.Group id="email">
@@ -95,7 +95,7 @@ export default function Auth() {
                     {errorMsg && (
                       <Alert
                         variant="danger"
-                        onClose={() => setErrorMsg("")}
+                        onClose={() => setErrorMsg('')}
                         dismissible
                       >
                         {errorMsg}
@@ -109,13 +109,13 @@ export default function Auth() {
                   </Form>
                 </Card.Body>
                 <div className="w-100 text-center mt-2 fs-5 mb-2 general-text">
-                  New User? <Link to={"/register"}>Register</Link>
+                  New User? <Link to={'/register'}>Register</Link>
                 </div>
                 <div className="w-100 text-center mt-2 fs-5 mb-2 general-text">
                   OR
                 </div>
                 <div className="w-100 text-center mt-2 fs-5 mb-2 general-text">
-                  <Link to={"/reset-password"}>Forgot Password</Link>?
+                  <Link to={'/reset-password'}>Forgot Password</Link>?
                 </div>
               </Col>
             </Row>
@@ -123,5 +123,5 @@ export default function Auth() {
         </Card>
       </div>
     </>
-  );
+  )
 }

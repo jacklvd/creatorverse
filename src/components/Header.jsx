@@ -1,62 +1,62 @@
 /* eslint-disable no-undef */
-import { useAuth } from "../context/AuthProvider";
-import { useEffect } from "react";
-import { Link } from "react-router-dom";
-import "../components/styles/header.scss";
+import { useAuth } from '../context/AuthProvider'
+import { useEffect } from 'react'
+import { Link } from 'react-router-dom'
+import '../components/styles/header.scss'
 
 const Header = () => {
-  const { user, signOut, auth } = useAuth();
+  const { user, signOut, auth } = useAuth()
 
   const handleLogout = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
     try {
-      const { error } = await signOut();
-      console.log(error);
+      const { error } = await signOut()
+      console.log(error)
     } catch (error) {
-      console.log(error);
+      console.log(error)
     }
-  };
+  }
 
   const parallaxHeight = () => {
-    let scroll_top = window.scrollY;
+    let scroll_top = window.scrollY
     let header_height = document.querySelector(
-      ".sample-header-section"
-    ).offsetHeight;
+      '.sample-header-section',
+    ).offsetHeight
 
     document.querySelector(
-      ".sample-section"
-    ).style.marginTop = `${header_height}px`;
-    document.querySelector(".sample-header").style.height = `${
+      '.sample-section',
+    ).style.marginTop = `${header_height}px`
+    document.querySelector('.sample-header').style.height = `${
       header_height - scroll_top
-    }px`;
-  };
+    }px`
+  }
 
   useEffect(() => {
-    parallaxHeight();
+    parallaxHeight()
 
     const handleScroll = () => {
-      parallaxHeight();
-    };
+      parallaxHeight()
+    }
 
     const handleResize = () => {
-      parallaxHeight();
-    };
+      parallaxHeight()
+    }
 
-    window.addEventListener("scroll", handleScroll);
-    window.addEventListener("resize", handleResize);
+    window.addEventListener('scroll', handleScroll)
+    window.addEventListener('resize', handleResize)
 
     return () => {
-      window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
+      window.removeEventListener('scroll', handleScroll)
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [])
 
   return (
     <>
       <div className="sample-header">
         <div className="sides">
           {auth && (
-            <Link to="/" className="logo" style={{ color: "#eee" }}>
+            <Link to="/" className="logo" style={{ color: '#eee' }}>
               CREATORVERSE
             </Link>
           )}
@@ -66,7 +66,7 @@ const Header = () => {
             <button
               onClick={handleLogout}
               className="menu"
-              style={{ color: "#eee" }}
+              style={{ color: '#eee' }}
             >
               LOGOUT
             </button>
@@ -83,7 +83,7 @@ const Header = () => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header

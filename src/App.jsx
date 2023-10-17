@@ -1,15 +1,15 @@
-import { Routes, Route } from "react-router-dom";
-import { lazy, Suspense } from "react";
-import AuthRoute from "./components/AuthRoute";
-import Auth from "./pages/Auth/Auth";
-import Register from "./pages/Auth/Register";
-import PasswordReset from "./pages/Auth/PasswordReset";
-import UpdatePassword from "./pages/Auth/UpdatePassword";
-import "./App.scss";
+import { Routes, Route } from 'react-router-dom'
+import { lazy, Suspense } from 'react'
+import AuthRoute from './components/AuthRoute'
+import Auth from './pages/Auth/Auth'
+import Register from './pages/Auth/Register'
+import PasswordReset from './pages/Auth/PasswordReset'
+import UpdatePassword from './pages/Auth/UpdatePassword'
+import './App.scss'
 
-const Home = lazy(() => import("./pages/Home/Home"));
-const Dashboard = lazy(() => import("./pages/Dashboard/Dashboard"));
-const UpdateCreator = lazy(() => import("./pages/Dashboard/UpdateCreator"));
+const Home = lazy(() => import('./pages/Home/Home'))
+const Dashboard = lazy(() => import('./pages/Dashboard/Dashboard'))
+const UpdateCreator = lazy(() => import('./pages/Dashboard/UpdateCreator'))
 
 function App() {
   return (
@@ -31,7 +31,7 @@ function App() {
         </Routes>
       </Suspense>
     </>
-  );
+  )
 }
 
-export default App;
+export default App

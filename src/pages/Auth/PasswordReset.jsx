@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef, useState } from 'react'
 import {
   Alert,
   Button,
@@ -8,35 +8,35 @@ import {
   Row,
   Card,
   Container,
-} from "react-bootstrap";
-import { Link } from "react-router-dom";
-import { useAuth } from "../../context/AuthProvider";
+} from 'react-bootstrap'
+import { Link } from 'react-router-dom'
+import { useAuth } from '../../context/AuthProvider'
 
 const PasswordReset = () => {
-  const { passwordReset } = useAuth();
-  const emailRef = useRef(null);
-  const [loading, setLoading] = useState(false);
-  const [msg, setMsg] = useState("");
+  const { passwordReset } = useAuth()
+  const emailRef = useRef(null)
+  const [loading, setLoading] = useState(false)
+  const [msg, setMsg] = useState('')
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
     try {
-      setLoading(true);
-      const { data, error } = await passwordReset(emailRef.current.value);
-      console.log(error);
-      console.log(data);
-      setMsg("Check your email for password reset instructions!");
+      setLoading(true)
+      const { data, error } = await passwordReset(emailRef.current.value)
+      console.log(error)
+      console.log(data)
+      setMsg('Check your email for password reset instructions!')
     } catch (e) {
-      console.log(e);
+      console.log(e)
     }
-    setLoading(false);
-  };
+    setLoading(false)
+  }
 
   return (
     <>
       <div
         className="d-flex justify-content-center align-items-center"
-        style={{ height: "100vh" }}
+        style={{ height: '100vh' }}
       >
         <Card className="mx-auto">
           <Container className="my-4">
@@ -47,12 +47,12 @@ const PasswordReset = () => {
                     src="https://illustrations.popsy.co/gray/calculator.svg"
                     alt="login"
                     className="img-fluid"
-                    style={{ maxHeight: "390px" }}
+                    style={{ maxHeight: '390px' }}
                   />
                 </div>
               </Col>
               <Col md={6} className="mx-auto">
-                <Card.Body style={{ padding: "30px" }}>
+                <Card.Body style={{ padding: '30px' }}>
                   <h2 className="text-center mb-4">CREATOR VERSE</h2>
                   <Form onSubmit={handleSubmit}>
                     <Form.Group id="email">
@@ -72,7 +72,7 @@ const PasswordReset = () => {
                     {msg && (
                       <Alert
                         variant="danger"
-                        onClose={() => setMsg("")}
+                        onClose={() => setMsg('')}
                         dismissible
                       >
                         {msg}
@@ -86,7 +86,7 @@ const PasswordReset = () => {
                   </Form>
                 </Card.Body>
                 <div className="w-100 text-center mt-2 fs-5 mb-2">
-                  Back to Login? <Link to={"/login"}>Login</Link>
+                  Back to Login? <Link to={'/login'}>Login</Link>
                 </div>
               </Col>
             </Row>
@@ -94,7 +94,7 @@ const PasswordReset = () => {
         </Card>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default PasswordReset;
+export default PasswordReset

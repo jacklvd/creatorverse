@@ -2,7 +2,6 @@
 import Header from '../../components/Header.jsx'
 import Cards from '../../components/Cards.jsx'
 const Home = () => {
-
   return (
     <>
       <Header />
@@ -10,9 +9,9 @@ const Home = () => {
         <div className="sample-section">
           <Cards />
         </div>
-      </div>     
+      </div>
     </>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home
